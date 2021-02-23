@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
-import Message2 from '../../UI/Message2';
+import Message2 from '../../UI/MessageConfirm';
 import './AddFriends.scss';
 
 function AddFriends({ state, methods }) {
@@ -28,7 +28,7 @@ function AddFriends({ state, methods }) {
   let selected = [...addFriendSelected];
   
   // local state
-  const [showMsg2, setShowMsg2] = useState(false);
+  const [isMessageVisible, setMessageVisible] = useState(false);
 
   // components
   function Faces() {
@@ -162,7 +162,7 @@ function AddFriends({ state, methods }) {
 
   
   // Component : Button
-  const onClickClose = () => { temp.length ? setShowMsg2(true) : hideModal(); };
+  const onClickClose = () => { temp.length ? setMessageVisible(true) : hideModal(); };
   const ButtonHeaderClose = () => (
   <div className="header-btn" onClick={onClickClose}><img src={closeSrc} alt=""/></div>
   );
@@ -184,15 +184,15 @@ function AddFriends({ state, methods }) {
 
   // Props for Component: Message
   const msg = {
-    confirm() {
+    onConfirm() {
       setTemp([]);
       selected = selected.map((x) => (x === 'complete') ? x : 'yet');
       setAddFriendSelected(selected);
-      setShowMsg2(false);
+      setMessageVisible(false);
       hideModal();
     },
-    cancel() {
-      setShowMsg2(false)
+    onCancel() {
+      setMessageVisible(false)
     },
     text: <>
     완료버튼을 눌러야 변경사항이 저장됩니다. <br/> 
@@ -203,7 +203,7 @@ function AddFriends({ state, methods }) {
 
   return (
     <>
-      { showMsg2 && <Message2 confirm={msg.confirm} cancel={msg.cancel} text={msg.text} />}
+      { isMessageVisible && <Message2 onConfirm={msg.onConfirm} onCancel={msg.onCancel} text={msg.text} />}
       { show &&
         <div className="add-friends">
           <div className="base-header">

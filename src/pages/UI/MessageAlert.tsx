@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Message({ state, methods }) {
+function MessageAlert({ state, methods }) {
   const { isVisible, title, text } = state;
   const { close } = methods;
 
@@ -21,4 +21,4 @@ function Message({ state, methods }) {
   );
 }
 
-export default Message;
+export default MessageAlert;

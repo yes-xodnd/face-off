@@ -9,7 +9,7 @@ import PicResultContainer from './pages/PicResult/PicResultContainer';
 
 // UI elements
 import Header from './pages/UI/Header';
-import MessageContainer from './pages/UI/MessageContainer';
+import MessageAlertContainer from './pages/UI/MessageAlertContainer';
 import LoadingContainer from './pages/UI/LoadingContainer';
 import MenubarContainer from './pages/UI/MenubarContainer';
 import AddFriendsContainer from './pages/PicResult/component/AddFriendsContainer';
@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <MessageContainer />
+        <MessageAlertContainer />
         <LoadingContainer />
 
         <div className="window">
