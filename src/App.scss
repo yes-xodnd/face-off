@@ -15,7 +15,6 @@
   .window {
     @include retro-border;
     position: relative;
-    margin-bottom: 50px;
     width: 100%;
     height: auto;
     animation: show-window 500ms ease-in-out forwards;
