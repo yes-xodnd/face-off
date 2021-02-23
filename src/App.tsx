@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { BrowserRouter,Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // pages
 import HomeContainer from './pages/Home/HomeContainer';
@@ -19,7 +19,7 @@ function App() {
   
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename='/face-off'>
         <MessageAlertContainer />
         <LoadingContainer />
 
