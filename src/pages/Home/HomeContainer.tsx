@@ -4,14 +4,19 @@ import React from 'react';
 import Home from './components/Home';
 
 // modules
-import API from '../../api';
+// import API from '../../api';
 import { useHistory } from 'react-router-dom';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { selectPicture, setFaceDetected, setFaceArea, setSelectedFaceIdx } from '../../redux/modules/pic';
+import {
+  selectPicture,
+  // setFaceDetected,
+  // setFaceArea,
+  // setSelectedFaceIdx
+} from '../../redux/modules/pic';
 import { hideLoading, showLoading } from '../../redux/modules/message';
-import { setAddFriendSelected } from '../../redux/modules/friend';
+// import { setAddFriendSelected } from '../../redux/modules/friend';
 import { RootState } from '../../index';
 
 function HomeContainer() {
@@ -31,36 +36,37 @@ function HomeContainer() {
       },
     onStart() {
       dispatch(showLoading());
+      setTimeout(() => {
+        dispatch(hideLoading());
+        history.push('/edit');
+      }, 1500);
 
-      API.uploadPic(state.picURL)
-        .then(res => {
-          const { faces_area, faces_crop, friend_list } = res.data;
+      // API.uploadPic(state.picURL)
+      //   .then(res => {
+      //     const { faces_area, faces_crop, friend_list } = res.data;
 
-          const addFriendSelected = new Array(faces_area.length).fill('yet');
-          let selectedFaceIdx = new Array(faces_area.length).fill(true);
-          let faceDetected = faces_crop.map(x => [x,'unknown']);
+      //     const addFriendSelected = new Array(faces_area.length).fill('yet');
+      //     let selectedFaceIdx = new Array(faces_area.length).fill(true);
+      //     let faceDetected = faces_crop.map(x => [x,'unknown']);
           
-          friend_list.forEach(x => {
-            selectedFaceIdx[x['idx']] = false;
-            faceDetected[x['idx']] = [faceDetected[x['idx']][0], x['fname']];
-          });
+      //     friend_list.forEach(x => {
+      //       selectedFaceIdx[x['idx']] = false;
+      //       faceDetected[x['idx']] = [faceDetected[x['idx']][0], x['fname']];
+      //     });
 
-          dispatch(setFaceArea(faces_area));
-          dispatch(setFaceDetected(faceDetected));
-          dispatch(setSelectedFaceIdx(selectedFaceIdx));
-          dispatch(setAddFriendSelected(addFriendSelected));
+      //     dispatch(setFaceArea(faces_area));
+      //     dispatch(setFaceDetected(faceDetected));
+      //     dispatch(setSelectedFaceIdx(selectedFaceIdx));
+      //     dispatch(setAddFriendSelected(addFriendSelected));
 
-          setTimeout(() => {
-            dispatch(hideLoading());
-            history.push('/edit');
-          }, 1000);
-        })
-        .catch(() => {
-          setTimeout(() => {
-            dispatch(hideLoading());
-            history.push('/edit');
-          }, 1000);
-        });
+      //     setTimeout(() => {
+      //       dispatch(hideLoading());
+      //       history.push('/edit');
+      //     }, 1000);
+      //   })
+      //   .catch(() => {
+      //     dispatch(hideLoading());
+      //   });
     },
   };
 
