@@ -15,9 +15,23 @@ import {
   addStickerUser,
   deleteStickerUser 
 } from '../../../redux/modules/sticker';
-
 import { showMessage } from '../../../redux/modules/message';
 import { RootState } from '../../../index';
+
+// sticker Images
+import image0 from '../../../assets/img/sticker/Pikachu2.jpg';
+import image1 from '../../../assets/img/sticker/hedgehog.png';
+import image2 from '../../../assets/img/sticker/angry.png';
+import image3 from '../../../assets/img/sticker/2.png';
+import image4 from '../../../assets/img/sticker/cat.png';
+import image5 from '../../../assets/img/sticker/smith.png';
+import image6 from '../../../assets/img/sticker/santa.png';
+import image7 from '../../../assets/img/sticker/darang.png';
+
+const stickerImages = [
+  image0, image1, image2, image3,
+  image4, image5, image6, image7,
+];
 
 
 function PicEditStickerContainer() {
@@ -26,6 +40,7 @@ function PicEditStickerContainer() {
   const state = {
     ...useSelector((state: RootState) => state.sticker),
     isAuthed: useSelector((state: RootState) => state.auth.isAuthed),
+    stickerImages,
   };
 
   const methods = {
