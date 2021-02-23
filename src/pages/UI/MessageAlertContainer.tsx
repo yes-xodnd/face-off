@@ -1,7 +1,7 @@
 import React from 'react';
 
 // components
-import Message from './Message';
+import MessageAlert from './MessageAlert';
 
 // redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import { hideMessage } from '../../redux/modules/message';
 import { RootState } from '../../index';
 
 
-function MessageContainer() {
+function MessageAlertContainer() {
   const dispatch = useDispatch();
 
   // state
@@ -22,7 +22,7 @@ function MessageContainer() {
     }
   }
 
-  return <Message state={state} methods={methods} />;
+  return <MessageAlert state={state} methods={methods} />;
 }
 
-export default MessageContainer;
+export default MessageAlertContainer;

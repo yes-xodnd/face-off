@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 // components
-import Message from './Message2';
+import MessageConfirm from './MessageConfirm';
 import ButtonUpload from './ButtonUploadBase';
 import { ButtonLoginGoogle, ButtonLogoutGoogle } from './ButtonGoogle';
 import { ButtonLoginKakao, ButtonLogoutKakao } from './ButtonKakao';
@@ -29,9 +29,9 @@ function Menubar({ state, methods }) {
   // vars
   const messageText = <>진행사항은 저장되지 않습니다. <br/> 메인화면으로 이동하시겠습니까?</>;
 
-  useEffect(() => {
-    !!sessionStorage.getItem('userId') ? login() : logout(false);
-  });
+  // useEffect(() => {
+  //   isAuthed ? login() : logout(false);
+  // });
 
   // methods
   const goToHome = () => { 
@@ -63,7 +63,7 @@ function Menubar({ state, methods }) {
   
   return (
     <div className="menu-wrap">
-      { showMsg2 && <Message confirm={goToHome} cancel={cancel} text={messageText}  />}
+      { showMsg2 && <MessageConfirm onConfirm={goToHome} onCancel={cancel} text={messageText}  />}
       
       <div className="divider"></div>
       <div className="menu">
