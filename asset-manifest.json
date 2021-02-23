@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/face-off/static/css/main.43f95b35.chunk.css",
-    "main.js": "/face-off/static/js/main.de4ef8a1.chunk.js",
-    "main.js.map": "/face-off/static/js/main.de4ef8a1.chunk.js.map",
+    "main.js": "/face-off/static/js/main.d4e49695.chunk.js",
+    "main.js.map": "/face-off/static/js/main.d4e49695.chunk.js.map",
     "runtime-main.js": "/face-off/static/js/runtime-main.af54f25a.js",
     "runtime-main.js.map": "/face-off/static/js/runtime-main.af54f25a.js.map",
-    "static/js/2.58cfee2a.chunk.js": "/face-off/static/js/2.58cfee2a.chunk.js",
-    "static/js/2.58cfee2a.chunk.js.map": "/face-off/static/js/2.58cfee2a.chunk.js.map",
+    "static/js/2.0d062a43.chunk.js": "/face-off/static/js/2.0d062a43.chunk.js",
+    "static/js/2.0d062a43.chunk.js.map": "/face-off/static/js/2.0d062a43.chunk.js.map",
     "static/js/3.906ac874.chunk.js": "/face-off/static/js/3.906ac874.chunk.js",
     "static/js/3.906ac874.chunk.js.map": "/face-off/static/js/3.906ac874.chunk.js.map",
     "index.html": "/face-off/index.html",
     "static/css/main.43f95b35.chunk.css.map": "/face-off/static/css/main.43f95b35.chunk.css.map",
-    "static/js/2.58cfee2a.chunk.js.LICENSE.txt": "/face-off/static/js/2.58cfee2a.chunk.js.LICENSE.txt",
+    "static/js/2.0d062a43.chunk.js.LICENSE.txt": "/face-off/static/js/2.0d062a43.chunk.js.LICENSE.txt",
     "static/media/00시작하기.0573eac8.jpg": "/face-off/static/media/00시작하기.0573eac8.jpg",
     "static/media/01옵션선택.b17ea21a.jpg": "/face-off/static/media/01옵션선택.b17ea21a.jpg",
     "static/media/02대상선택.f950e8cf.jpg": "/face-off/static/media/02대상선택.f950e8cf.jpg",
@@ -44,8 +44,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.af54f25a.js",
-    "static/js/2.58cfee2a.chunk.js",
+    "static/js/2.0d062a43.chunk.js",
     "static/css/main.43f95b35.chunk.css",
-    "static/js/main.de4ef8a1.chunk.js"
+    "static/js/main.d4e49695.chunk.js"
   ]
 }
