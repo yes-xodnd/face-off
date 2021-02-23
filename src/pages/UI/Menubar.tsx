@@ -29,9 +29,9 @@ function Menubar({ state, methods }) {
   // vars
   const messageText = <>진행사항은 저장되지 않습니다. <br/> 메인화면으로 이동하시겠습니까?</>;
 
-  useEffect(() => {
-    !!sessionStorage.getItem('userId') ? login() : logout(false);
-  });
+  // useEffect(() => {
+  //   isAuthed ? login() : logout(false);
+  // });
 
   // methods
   const goToHome = () => { 
