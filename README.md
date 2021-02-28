@@ -1,8 +1,9 @@
 # FACE OFF
 
-- [프론트엔드 팀 README.md](./FRONTEND.md) 
 - [프론트엔드 데모](https://yes-xodnd.github.io/face-off)
   - 초기 화면에서 서비스 소개 및 사용방법을 확인할 수 있습니다.
+- [프론트엔드 팀 README.md](./FRONTEND.md) 
+- [프론트엔드 팀 회고](./RETROSPECTIVE.md)
 
 ## 프로젝트 소개
 
