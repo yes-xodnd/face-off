@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 // components
 import PicEdit from './components/PicEdit';
@@ -8,10 +9,19 @@ import API from '../../api';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
-import { showMessage, hideLoading, showLoading } from '../../redux/modules/message';
-import { setOptionType, setOptionLevel,setSelectedFaceIdx, setResultPicture } from '../../redux/modules/pic';
+import { 
+  showMessage,
+  showLoading,
+  hideLoading,
+} from '../../redux/modules/message';
+import {
+  setOptionType,
+  setOptionLevel,
+  setSelectedFaceIdx,
+  setResultPicture
+} from '../../redux/modules/pic';
 import { RootState } from '../../index';
-import { useHistory } from 'react-router-dom';
+
 
 function PicEditContainer() {
   const dispatch = useDispatch();
@@ -36,7 +46,9 @@ function PicEditContainer() {
       dispatch(setSelectedFaceIdx(selectedFaceIdx));
     },
     onUploadOptions() {
-      const targetFace = state.faceArea.filter((area, index) => state.selectedFaceIdx[index]);
+      const targetFace = state.faceArea.filter(
+        (area, index) => state.selectedFaceIdx[index]);
+
       if (!targetFace.length) {
         dispatch(showMessage('Error', '가리고 싶은 얼굴을 선택해주세요.'));
       } else {
@@ -60,8 +72,6 @@ function PicEditContainer() {
       }
     },
   };
-
-  
   
   return <PicEdit state={state} methods={methods} />
 }

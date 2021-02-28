@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // components
 import MessageConfirm from './MessageConfirm';
@@ -24,7 +24,7 @@ function Menubar({ state, methods }) {
   const { login, logout, onSocialLoginSuccess, deletePicURL } = methods;
 
   // local state
-  const [showMsg2, setShowMsg2] = useState(false);
+  const [isMessageVisible, setMessageVisible] = useState(false);
 
   // vars
   const messageText = <>진행사항은 저장되지 않습니다. <br/> 메인화면으로 이동하시겠습니까?</>;
@@ -34,25 +34,31 @@ function Menubar({ state, methods }) {
   // });
 
   // methods
-  const goToHome = () => { 
-    deletePicURL(); history.push('/');
-    setShowMsg2(false);
+  const redirectToHome = () => { 
+    deletePicURL();
+    setMessageVisible(false);
+    history.push('/');
   };
-  const cancel = () => {
-    setShowMsg2(false);
+
+  const hideMessage = () => {
+    setMessageVisible(false);
+  }
+
+  const onClickButtonHome = () => {
+    if (location.pathname === '/edit') {
+      setMessageVisible(true);
+    } else {
+      redirectToHome();
+    }
   }
 
   // components
   const ButtonHome = () => {
-    const onClickHome = () => {
-      if (location.pathname === '/edit') {
-        setShowMsg2(true);
-      } else {
-        goToHome();
-      }
-    }
-    return (<div onClick={onClickHome} className="base-btn-icon">
-      <img src={homeImage} alt=""/></div>)
+    return (
+      <button onClick={onClickButtonHome} className="base-btn-icon">
+        <img src={homeImage} alt="home"/>
+      </button>
+    );
   };
 
   const ButtonLogout = () => (
@@ -63,7 +69,12 @@ function Menubar({ state, methods }) {
   
   return (
     <div className="menu-wrap">
-      { showMsg2 && <MessageConfirm onConfirm={goToHome} onCancel={cancel} text={messageText}  />}
+      { isMessageVisible &&
+        <MessageConfirm
+          onConfirm={redirectToHome}
+          onCancel={hideMessage}
+          text={messageText} />
+      }
       
       <div className="divider"></div>
       <div className="menu">
@@ -72,7 +83,7 @@ function Menubar({ state, methods }) {
         <div className="flex">
           <ButtonHome />
           <ButtonUpload 
-            content={<img src={uploadImage} alt=""/>}
+            content={<img src={uploadImage} alt="upload"/>}
             className="base-btn-icon" />
         </div> 
 
@@ -96,7 +107,7 @@ function Menubar({ state, methods }) {
 
       <div className="divider"></div>
     </div>
-  )
+  );
 }
 
 export default Menubar;
