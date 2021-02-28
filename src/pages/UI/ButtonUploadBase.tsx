@@ -51,7 +51,11 @@ function ButtonUpload({ content, className }) {
             style={{ display:"none" }}
             type="file" accept="image/*" />
         </div>
-        { messageVisible && <MessageConfirm onConfirm={onConfirm} onCancel={onCancel} text={text} /> }
+        { messageVisible &&
+          <MessageConfirm
+            onConfirm={onConfirm}
+            onCancel={onCancel}
+            text={text} /> }
     </>
   )
 }
