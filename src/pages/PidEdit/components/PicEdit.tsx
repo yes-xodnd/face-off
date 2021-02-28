@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // components
-import EditImageArea from './PicEditImageArea';
+import PicEditImageArea from './PicEditImageArea';
 import PicEditOptions from './PicEditOptions';
 import PicEditFaces from './PicEditFaces';
 
@@ -45,7 +45,7 @@ function PicEdit({ state, methods }) {
         <>
         <div className="pic-edit">
           <div className="image-area-wrap" >
-            <EditImageArea state={state} methods={methods} />
+            <PicEditImageArea state={state} methods={methods} />
           </div>
           <div className="menu-wrap">
 

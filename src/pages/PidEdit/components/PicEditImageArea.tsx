@@ -3,18 +3,18 @@ import '../../../base.scss';
 import FaceArea from './FaceArea';
 
 
-function EditImageArea({ state, methods }) {
+function PicEditImageArea({ state, methods }) {
   const imageRef = useRef(null);
   const { picURL } = state;
   
   return (
     <div className="pic-area">
       <div className="img-wrap" style={{position:'relative'}}>
-        <img ref={imageRef} src={picURL} alt="" />
-        <FaceArea state={state} methods={methods} />
+        <img ref={imageRef} src={picURL} alt="uploaded" />
+        <FaceArea state={state} methods={methods} imageRef={imageRef} />
       </div>
     </div>
   );
 }
 
-export default EditImageArea;
+export default PicEditImageArea;

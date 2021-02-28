@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import './Menubar.scss';
 
 // components
 import MessageConfirm from './MessageConfirm';
@@ -11,23 +13,22 @@ import ButtonFriend from './ButtonFriend';
 import homeImage from '../../assets/img/icon/home.png';
 import uploadImage from '../../assets/img/icon/new.jpg';
 
-import { useHistory, useLocation } from 'react-router-dom';
-import './Menubar.scss';
-
 
 function Menubar({ state, methods }) {
+  const [isMessageVisible, setMessageVisible] = useState(false);
   const history = useHistory();
   const location = useLocation();
   
   // props
   const { isAuthed, provider } = state;
-  const { login, logout, onSocialLoginSuccess, deletePicURL } = methods;
+  const { logout, onSocialLoginSuccess, deletePicURL } = methods;
 
-  // local state
-  const [isMessageVisible, setMessageVisible] = useState(false);
 
   // vars
-  const messageText = <>진행사항은 저장되지 않습니다. <br/> 메인화면으로 이동하시겠습니까?</>;
+  const messageText = `
+    진행사항은 저장되지 않습니다.
+    메인화면으로 이동하시겠습니까?
+  `;
 
   // useEffect(() => {
   //   isAuthed ? login() : logout(false);
@@ -55,9 +56,9 @@ function Menubar({ state, methods }) {
   // components
   const ButtonHome = () => {
     return (
-      <button onClick={onClickButtonHome} className="base-btn-icon">
+      <div onClick={onClickButtonHome} className="base-btn-icon">
         <img src={homeImage} alt="home"/>
-      </button>
+      </div>
     );
   };
 

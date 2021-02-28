@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import FaceAreaBox from './FaceAreaBox';
 
-function FaceArea({ state, methods }) {
-  const { faceArea, selectedFaceIdx } = state;
-  const { setSelectedFaceIdx } = methods;
 
-  const getRatio = el => (el.width / el.naturalWidth);
-  const image = document.querySelector('div.img-wrap img') as HTMLImageElement;
-
-  const [ratio, setRatio] = useState(getRatio(image));
-  let tempSelected = selectedFaceIdx.slice();
-
-  const handleResize = () => {setRatio(getRatio(image));};
+function FaceArea({ state, methods, imageRef }) {
+  const [ratio, setRatio] = useState(getRatio(imageRef.current));
 
   useEffect(() => {
     handleResize();
@@ -18,38 +11,35 @@ function FaceArea({ state, methods }) {
     return () => {
       window.removeEventListener('resize', handleResize);
     }
-  })
+  });
 
-  // components
-  const FaceBox = ({ pos, index }) => {
-    const [x1, y1, x2, y2] = pos;
-    const top = (y1 * ratio) + 'px';
-    const left = (x1 * ratio) + 'px';
-    const width = ((x2 - x1) * ratio) + 'px';
-    const height = ((y2 - y1) * ratio) + 'px';
-    const isSelected = tempSelected[index];
+  const { faceArea, selectedFaceIdx } = state;
+  const { setSelectedFaceIdx } = methods;
+  
+  function handleResize() {
+    setRatio(getRatio(imageRef.current));
+  };
 
-    const style = {
-      borderColor: isSelected ? 'red' : 'lawngreen',
-      borderWidth: isSelected ? '2px' : '1px',
-      borderStyle: isSelected ? 'dashed' : 'solid',
-      backgroundColor: isSelected ? 'rgba(0, 0, 0, 0.5)' : 'none',
-      top, left, width, height
-    };
+  function getRatio(el) {
+    return el ? el.width / el.naturalWidth : 0;
+  }
 
-    const onClick = () => {
-      tempSelected[index] = !tempSelected[index];
-      setSelectedFaceIdx(tempSelected);
-    };
-
-    return <div onClick={onClick} className="face-box" style={style}></div>;
+  const onClickFaceBox = index => () => {
+    setSelectedFaceIdx(
+      selectedFaceIdx.map((v, i) => i === index ? !v : v));
   };
 
   const Boxes = faceArea.map((pos, index) => (
-    <FaceBox pos={pos} index={index} key={index} />
+    <FaceAreaBox
+      pos={pos}
+      ratio={ratio}
+      onClick={onClickFaceBox(index)}
+      isSelected={selectedFaceIdx[index]}
+      key={index}
+    />
   ));
   
-  return <>{image && Boxes}</>;
+  return <>{ imageRef.current && Boxes }</>;
 }
 
 export default FaceArea;
